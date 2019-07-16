@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/parse-ly/parse.ly/issues"
   },
-  "homepage": "https://github.com/parse-ly/parse.ly#readme"
+  "homepage": "https://github.com/parse-ly/parse.ly#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0"
+  }
 }
