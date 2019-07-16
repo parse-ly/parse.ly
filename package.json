@@ -1,0 +1,19 @@
+{
+  "name": "find-your-beat",
+  "version": "1.0.0",
+  "description": "Simple music searching app based on the mood of the lyrics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parse-ly/parse.ly.git"
+  },
+  "author": "Parse.ly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parse-ly/parse.ly/issues"
+  },
+  "homepage": "https://github.com/parse-ly/parse.ly#readme"
+}
