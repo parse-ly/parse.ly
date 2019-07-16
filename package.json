@@ -4,7 +4,9 @@
   "description": "Simple music searching app based on the mood of the lyrics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack --config webpacl.config.js --mode development --watch",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
