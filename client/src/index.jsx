@@ -10,7 +10,6 @@ import VideoPlayer from './components/VideoPlayer.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       video: '',
       query: '',
@@ -24,18 +23,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className = "navbar">
+        <nav className="navbar">
           <h1>Hello, world!</h1>
-          <div className= "searchbar">
-            < Search />
+          <div className="searchbar">
+            <Search />
           </div>
         </nav>
-        <div className = "section">
-          <div className = "player">
+        <div className="section">
+          <div className="player">
             <VideoPlayer />
           </div>
-          <div className = "songTitles">
-            < SongList />
+          <div className="songTitles">
+            <SongList />
           </div>
         </div>
       </div>
