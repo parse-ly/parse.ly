@@ -31,7 +31,7 @@ app.get('/search/:artist', (req, res) => {
     })
     .then((artistId) => {
       // 2: get albums of this artist, sorted by most recent release
-      axios.get(`https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artistId}&s_release_date=desc&g_album_name=1&apikey=${process.env.MM_API_KEY}`);
+      return axios.get(`https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artistId}&s_release_date=desc&g_album_name=1&apikey=${process.env.MM_API_KEY}`);
     })
     .then((albumRes) => {
       const albumArr = albumRes.data.message.body.album_list;
@@ -42,7 +42,7 @@ app.get('/search/:artist', (req, res) => {
     .then((albumIdArr) => {
       // make an array of promises to complete for each album (each promise will return a track list)
       const trackPromises = albumIdArr.map(id => (
-        axios.get(`https://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${id}&apikey=${process.env.MM_API_KEY}`)
+        axios.get(`https://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${id}&f_has_lyrics=1&apikey=${process.env.MM_API_KEY}`)
       ));
       return Promise.all(trackPromises);
     })
@@ -57,6 +57,15 @@ app.get('/search/:artist', (req, res) => {
     .then((trackIds) => {
       // Finally have an array of track ids
       // Need to get lyrics for each track
+      const lyricPromises = trackIds.map(id => (
+        axios.get(`https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${id}&apikey=${process.env.MM_API_KEY}`)
+      ));
+      return Promise.all(lyricPromises);
+    })
+    .then((lyricRes) => {
+      // Then send each lyric snippet thru the TwinWord API
+      const lyricsArr = lyricRes.map(lyricObj => lyricObj.data.message.body.lyrics.lyrics_body);
+      console.log(lyricsArr);
     })
 });
 
