@@ -1,6 +1,9 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 const SongListEntry = (props) => {
   return (
-    <div className ="song-list-entry">
+    <div className="song-list-entry">
       <div className="song-title">
         {/* Song title */}
         {/* On click function needed */}
