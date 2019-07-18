@@ -27,6 +27,7 @@ app.get('/*', (req, res) => {
       res.status(500).send(err);
     }
   });
+});
 // GET sent from search function
 app.get('/search/:artist', (req, res) => {
   const { artist } = req.params;
