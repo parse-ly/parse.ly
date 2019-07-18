@@ -101,9 +101,13 @@ app.get('/search/:artist', (req, res) => {
               songsData.forEach((songData, i) => {
                 songData.score = lyricScores[i].data.polarity_confidence;
                 songData.polarity = lyricScores[i].data.polarity;
+                Song.create({
+                  songname: songData.songname,
+                  artistname: songData.artist,
+                  score: songData.score,
+                  polarity: songData.polarity,
+                });
               });
-              console.log(songsData);
-              console.log(lyricScores);
             });
         });
     })
