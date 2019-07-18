@@ -21,6 +21,12 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 // Parser middleware
 app.use(bodyParser.json());
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 // GET sent from search function
 app.get('/search/:artist', (req, res) => {
   const { artist } = req.params;

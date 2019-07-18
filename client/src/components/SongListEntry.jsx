@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const SongListEntry = (props) => {
   return (
@@ -15,11 +14,7 @@ const SongListEntry = (props) => {
         {/* Score */}
       </div>
     </div>
-  )
-}
-
-SongListEntry.propTypes = {
-  song: React.PropTypes.object.isRequired,
-}
+  );
+};
 
 export default SongListEntry;
