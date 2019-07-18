@@ -4,6 +4,7 @@ const songSchema = new mongoose.Schema({
   songname: String,
   artistname: String,
   score: Number,
+  polarity: String,
   youtubelink: String,
 });
 
