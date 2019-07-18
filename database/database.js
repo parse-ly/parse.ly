@@ -1,20 +1,27 @@
 const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/parsley', {useNewUrlParser: true}).catch((err) => {
+  console.log('Having trouble with Database => ', err.message);
+});
+
 const songSchema = new mongoose.Schema({
   songname: String,
   artistname: String,
   score: Number,
-  youtubelink: String
+  polarity: String,
+  youtubelink: String,
 });
 
 const userSchema = new mongoose.Schema({
   username: String,
-  userid: Number
+  userid: Number,
 });
 
 const Song = mongoose.model('Song', songSchema);
 const User = mongoose.model('User', userSchema);
 
-mongoose.connect('mongodb://localhost/parsley', {useNewUrlParser: true}).catch((err) => {
-  console.log('Having trouble with Database => ', err.message);
-});
+
+module.exports = {
+  Song,
+  User,
+};
