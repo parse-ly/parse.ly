@@ -4,12 +4,12 @@ const songSchema = new mongoose.Schema({
   songname: String,
   artistname: String,
   score: Number,
-  youtubelink: String
+  youtubelink: String,
 });
 
 const userSchema = new mongoose.Schema({
   username: String,
-  userid: Number
+  userid: Number,
 });
 
 const Song = mongoose.model('Song', songSchema);
