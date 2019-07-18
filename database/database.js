@@ -18,3 +18,8 @@ const User = mongoose.model('User', userSchema);
 mongoose.connect('mongodb://localhost/parsley', {useNewUrlParser: true}).catch((err) => {
   console.log('Having trouble with Database => ', err.message);
 });
+
+module.exports = {
+  Song,
+  User,
+};
