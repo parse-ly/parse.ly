@@ -1,6 +1,17 @@
 import React, { Component } from "react";
+import queryString from 'query-string';
 import { Link } from "react-router-dom";
+
 class Landing extends Component {
+
+  componentWillMount() {
+    let query = queryString.parse(this.props.location.search);
+    if (query.token) {
+      window.localStorage.setItem('jwt', query.token);
+      this.props.history.push('/music');
+    }
+  }
+
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
@@ -30,17 +41,6 @@ class Landing extends Component {
               </Link>
             </div>
             <div className="col s6">
-              {/* <Link
-                to="/login"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large btn-flat waves-effect white black-text"
-              >
-                Log In
-              </Link> */}
               <a href="/auth/google" className="button">
           <div>
             <span className="svgIcon t-popup-svg">
