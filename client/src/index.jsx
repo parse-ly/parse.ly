@@ -13,11 +13,11 @@ import Login from './components/Login.jsx';
 const routing = (
   <Router>
   <Switch>
-    <div>
+    <React.Fragment>
       <Route path="/" component={App} />
       <Route path="/music" component={App} />
-    </div>
-    </Switch>
+    </React.Fragment>
+  </Switch>
   </Router>
 );
 
