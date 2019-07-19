@@ -6,12 +6,8 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import App from './app.jsx';
-import NavBar from './NavBar.jsx';
 import Landing from './Landing.jsx';
-import Login from './components/Login.jsx';
 
-
-// require('./stylesheets/base.scss');
 const routing = (
   <Router>
   <Switch>
