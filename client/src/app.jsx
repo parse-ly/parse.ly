@@ -13,18 +13,37 @@ class App extends Component {
     this.state = {
       video: '',
       query: '',
+      songs: [],
     };
+    this.clickSearch = this.onSearch.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  clickSearch() {
+    const { query } = this.state;
+    return axios.get(`/search/${query}`).then((response) => {
+      this.setState({
+        songs: response.data,
+      });
+    });
+  }
+
+  handleChange(e) {
+    this.setState({
+      query: e.target.value,
+    });
   }
 
   componentWillMount() {
-    var query = queryString.parse(this.props.location.search);
+    let query = queryString.parse(this.props.location.search);
     if (query.token) {
-      window.localStorage.setItem("jwt", query.token);
-      this.props.history.push("/");
-   }
-}
+      window.localStorage.setItem('jwt', query.token);
+      this.props.history.push('/');
+    }
+  }
 
   render() {
+    const { query } = this.state;
     return (
       <React.Fragment>
         <a href="/auth/google" className="button">
@@ -55,14 +74,14 @@ class App extends Component {
                   />
                 </g>
               </svg>
-       </span>
-     <span className="button-label">Sign in with Google</span>
-   </div>
-</a>
+            </span>
+            <span className="button-label">Sign in with Google</span>
+          </div>
+                </a>
         <nav className="navbar">
           <h1>Hello, world!</h1>
           <div className="searchbar">
-            <Search />
+            <Search query={query} change={this.handleChange} search={this.clickSearch} />
           </div>
         </nav>
         <div className="section">
