@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const passport = require('passport');
-const { Strategy } = require('passport-facebook');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const { Song, User } = require('../database/database');
 
 // Configure the Facebook strategy for use by Passport.
@@ -14,19 +14,23 @@ const { Song, User } = require('../database/database');
 // behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
-passport.use(new Strategy({
-  clientID: process.env.FACEBOOK_CLIENT_ID,
-  clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-  callbackURL: '/return',
-},
-((accessToken, refreshToken, profile, cb) =>
-  // In this example, the user's Facebook profile is supplied as the user
-  // record.  In a production-quality application, the Facebook profile should
-  // be associated with a user record in the application's database, which
-  // allows for account linking and authentication with other identity
-  // providers.
-  cb(null, profile)
-)));
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: '/auth/google/callback',
+    },
+    ((accessToken, refreshToken, profile, done) => {
+      const userData = {
+        email: profile.emails[0].value,
+        name: profile.displayName,
+        token: accessToken,
+      };
+      done(null, userData);
+    }),
+  ),
+);
 
 // Configure Passport authenticated session persistence.
 //
@@ -69,13 +73,23 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }
   });
 });
+
+/* GET Google Authentication API. */
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/', session: false }),
+  (req, res) => {
+    const { token } = req.user;
+    res.redirect(`http://localhost:${process.env.PORT || 3000}?token=${token}`);
+  });
 // GET sent from search function
 app.get('/search/:artist', (req, res) => {
   const { artist } = req.params;

@@ -49,6 +49,7 @@
     "morgan": "^1.6.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.0.0",
+    "passport-google-oauth": "^2.0.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
