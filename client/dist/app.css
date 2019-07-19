@@ -31,7 +31,7 @@ a {
  .button {
 	display: inline-block;
 	max-width: 300px;
-	margin-top: 50px;
+	margin-top: 10px;
 	border: 0;
 	padding: 0 18px;
 	text-align: left;
@@ -72,7 +72,7 @@ a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
-	margin: 15px 0;
+	/* margin: 15px 0; */
 }
 
 button {
@@ -82,7 +82,7 @@ button {
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
+	/* padding: 12px 45px; */
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
