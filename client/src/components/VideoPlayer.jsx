@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const VideoPlayer = (props) => {
   const video = props.video;
@@ -28,10 +27,5 @@ const VideoPlayer = (props) => {
     </div>
   );
 };
-
-VideoPlayer.propTypes = {
-  video: React.PropTypes.object.isRequired,
-  url: React.PropTypes.string.isRequired,
-}
 
 export default VideoPlayer;

@@ -1,6 +1,8 @@
+import React from 'react';
+
 const SongListEntry = (props) => {
   return (
-    <div className ="song-list-entry">
+    <div className="song-list-entry">
       <div className="song-title">
         {/* Song title */}
         {/* On click function needed */}
@@ -12,11 +14,7 @@ const SongListEntry = (props) => {
         {/* Score */}
       </div>
     </div>
-  )
-}
-
-SongListEntry.propTypes = {
-  song: React.PropTypes.object.isRequired,
-}
+  );
+};
 
 export default SongListEntry;
