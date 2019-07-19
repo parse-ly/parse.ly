@@ -6,6 +6,8 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import App from './app.jsx';
+import NavBar from './NavBar.jsx';
+import Landing from './Landing.jsx';
 import Login from './components/Login.jsx';
 
 
@@ -13,10 +15,10 @@ import Login from './components/Login.jsx';
 const routing = (
   <Router>
   <Switch>
-    <div>
-      <Route path="/" component={App} />
+    <React.Fragment>
+      <Route exact path="/" component={Landing} />
       <Route path="/music" component={App} />
-    </div>
+    </React.Fragment>
     </Switch>
   </Router>
 );
