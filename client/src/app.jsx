@@ -19,6 +19,14 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    let query = queryString.parse(this.props.location.search);
+    if (query.token) {
+      window.localStorage.setItem('jwt', query.token);
+      this.props.history.push('/');
+    }
+  }
+
   clickSearch() {
     const { query } = this.state;
     return axios.get(`/search/${query}`).then((response) => {
@@ -34,13 +42,6 @@ class App extends Component {
     });
   }
 
-  componentWillMount() {
-    let query = queryString.parse(this.props.location.search);
-    if (query.token) {
-      window.localStorage.setItem('jwt', query.token);
-      this.props.history.push('/');
-    }
-  }
 
   render() {
     const { query } = this.state;

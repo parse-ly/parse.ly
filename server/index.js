@@ -177,6 +177,8 @@ app.get('/search/:artist', (req, res) => {
                   polarity: songData.polarity,
                 });
               });
+              res.status(200);
+              res.json(songsData);
             });
         });
     })
