@@ -15,8 +15,16 @@ class App extends Component {
       query: '',
       songs: [],
     };
-    this.clickSearch = this.onSearch.bind(this);
+    this.clickSearch = this.clickSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount() {
+    let query = queryString.parse(this.props.location.search);
+    if (query.token) {
+      window.localStorage.setItem('jwt', query.token);
+      this.props.history.push('/');
+    }
   }
 
   clickSearch() {
@@ -34,13 +42,6 @@ class App extends Component {
     });
   }
 
-  componentWillMount() {
-    let query = queryString.parse(this.props.location.search);
-    if (query.token) {
-      window.localStorage.setItem('jwt', query.token);
-      this.props.history.push('/');
-    }
-  }
 
   render() {
     const { query } = this.state;
