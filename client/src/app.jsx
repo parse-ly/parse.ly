@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-import queryString from 'query-string';
-import NavBar from './NavBar.jsx';
-import Landing from './Landing.jsx';
 import Search from './components/Search.jsx';
 import SongList from './components/SongList.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
@@ -21,14 +18,6 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillMount() {
-    let query = queryString.parse(this.props.location.search);
-    if (query.token) {
-      window.localStorage.setItem('jwt', query.token);
-      this.props.history.push('/');
-    }
-  }
-
   clickSearch() {
     const { query } = this.state;
     return axios.get(`/search/${query}`).then((response) => {
@@ -43,7 +32,6 @@ class App extends Component {
       query: e.target.value,
     });
   }
-
 
   render() {
     const { query } = this.state;
@@ -70,4 +58,3 @@ class App extends Component {
 }
 
 export default App;
-// ReactDom.render(<App />, document.getElementById('app'));
