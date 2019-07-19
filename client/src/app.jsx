@@ -15,7 +15,7 @@ class App extends Component {
       query: '',
       songs: [],
     };
-    this.clickSearch = this.onSearch.bind(this);
+    this.clickSearch = this.clickSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -79,7 +79,7 @@ class App extends Component {
           </div>
                 </a>
         <nav className="navbar">
-          <h1>Hello, world!</h1>
+          <h1>Who do you want to listen to?</h1>
           <div className="searchbar">
             <Search query={query} change={this.handleChange} search={this.clickSearch} />
           </div>
