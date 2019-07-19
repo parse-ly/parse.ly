@@ -90,6 +90,197 @@ app.get('/auth/google/callback',
     const { token } = req.user;
     res.redirect(`http://localhost:${process.env.PORT || 3000}?token=${token}`);
   });
+
+// UNCOMMENT WHEN TESTING SERVER
+// app.get('/search/:artist', (req, res) => {
+//   res.status(200);
+//   res.json([
+//     {
+//       songname: 'Airbag (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252745,
+//       score: 0.543400228023529,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Paranoid Android (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252746,
+//       score: 0.6707372069358826,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Subterranean Homesick Alien (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252747,
+//       score: 0.8493298292160034,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Exit Music (For a Film) (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252748,
+//       score: 0.6650996208190918,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Let Down (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252749,
+//       score: 0.9453450441360474,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Karma Police (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252750,
+//       score: 0.49653804302215576,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Fitter Happier (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252751,
+//       score: 0.996536374092102,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Electioneering (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252752,
+//       score: 0.44361528754234314,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Climbing Up the Walls (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252753,
+//       score: 0.528287494889078,
+//       polarity: 'neutral',
+//     },
+//     {
+//       songname: 'No Surprises (Remastered)',
+//       artist: 'radiohead',
+//       trackId: 131252754,
+//       score: 0.5381248593330383,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'I Promise',
+//       artist: 'radiohead',
+//       trackId: 130499991,
+//       score: 0.6147956252098083,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'These Are My Twisted Words',
+//       artist: 'radiohead',
+//       trackId: 8767940,
+//       score: 0.4318546950817108,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'll Wind',
+//       artist: 'radiohead',
+//       trackId: 115016516,
+//       score: 0.5782575011253357,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Burn The Witch',
+//       artist: 'radiohead',
+//       trackId: 111289198,
+//       score: 0.7488194108009338,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Daydreaming',
+//       artist: 'radiohead',
+//       trackId: 111289200,
+//       score: 0.8257342576980591,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Decks Dark',
+//       artist: 'radiohead',
+//       trackId: 111289202,
+//       score: 0.535029947757721,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Desert Island Disk',
+//       artist: 'radiohead',
+//       trackId: 111289204,
+//       score: 0.520104706287384,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Ful Stop',
+//       artist: 'radiohead',
+//       trackId: 111289205,
+//       score: 0.9969593286514282,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Glass Eyes',
+//       artist: 'radiohead',
+//       trackId: 111289206,
+//       score: 0.730898916721344,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Identikit',
+//       artist: 'radiohead',
+//       trackId: 111289207,
+//       score: 0.9434064626693726,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'The Numbers',
+//       artist: 'radiohead',
+//       trackId: 111289208,
+//       score: 0.9768570065498352,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Present Tense',
+//       artist: 'radiohead',
+//       trackId: 111289209,
+//       score: 0.5278725624084473,
+//       polarity: 'neutral',
+//     },
+//     {
+//       songname: 'Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief',
+//       artist: 'radiohead',
+//       trackId: 111289210,
+//       score: 0.8320677876472473,
+//       polarity: 'positive',
+//     },
+//     {
+//       songname: 'Daydreaming',
+//       artist: 'radiohead',
+//       trackId: 110995165,
+//       score: 0.8257342576980591,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Burn the Witch',
+//       artist: 'radiohead',
+//       trackId: 110707686,
+//       score: 0.7488194108009338,
+//       polarity: 'negative',
+//     },
+//     {
+//       songname: 'Spectre',
+//       artist: 'radiohead',
+//       trackId: 87802217,
+//       score: 0.6934279203414917,
+//       polarity: 'negative',
+//     },
+//   ]);
+// });
+
+// COMMENT OUT ENTIRE APP.GET FUNCTION WHEN TESTING SEARCH FUNCTIONALITY
 // GET sent from search function
 app.get('/search/:artist', (req, res) => {
   const { artist } = req.params;
