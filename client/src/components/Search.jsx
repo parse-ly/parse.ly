@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Search = (props) => {
+const Search = ({ query, change, search }) => {
   return (
     <div className="search-bar">
-      <input className="form-control" type="text" />
-      <button type="button" className="btn search">
+      <input className="form-control" type="text" value={query} onChange={change} />
+      <button type="button" className="btn search" onClick={search}>
         {/* OnClick/onSearch function needed */}
       </button>
       <button type="button" className="btn happy">

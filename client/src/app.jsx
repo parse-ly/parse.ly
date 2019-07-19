@@ -13,16 +13,36 @@ class App extends Component {
     this.state = {
       video: '',
       query: '',
+      songs: [],
     };
+    this.clickSearch = this.onSearch.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  clickSearch() {
+    const { query } = this.state;
+    return axios.get(`/search/${query}`).then((response) => {
+      this.setState({ 
+        songs: response.data,
+      });
+    });
+  }
+
+  handleChange(e) {
+    this.setState({
+      query: e.target.value,
+    });
+  }
+
+
   render() {
+    const { query } = this.state;
     return (
       <React.Fragment>
         <nav className="navbar">
           <h1>Hello, world!</h1>
           <div className="searchbar">
-            <Search />
+            <Search query={query} change={this.handleChange} search={this.clickSearch} />
           </div>
         </nav>
         <div className="section">
