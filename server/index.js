@@ -91,6 +91,20 @@ app.get('/auth/google/callback',
     res.redirect(`http://localhost:${process.env.PORT || 3000}?token=${token}`);
   });
 
+app.get('/video/:query', (req, res) => {
+  const { query } = req.params;
+  // send this query to Youtube API
+  // get first result, send it in res
+  axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&key=${process.env.YT_API_KEY}`)
+    .then((response) => {
+      const { videoId } = response.data.items[0].id;
+      const link = `https://www.youtube.com/watch?v=${videoId}`;
+      res.status(200);
+      res.json(link);
+    })
+    .catch(err => console.error(err));
+});
+
 // UNCOMMENT WHEN TESTING SERVER
 // app.get('/search/:artist', (req, res) => {
 //   res.status(200);
