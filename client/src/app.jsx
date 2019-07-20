@@ -14,13 +14,17 @@ class App extends Component {
       video: '',
       query: '',
       songs: [],
+      polarity: '',
     };
     this.clickSearch = this.clickSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.songTitleClick = this.songTitleClick.bind(this);
+    this.handlePositivePolarity = this.handlePositivePolarity.bind(this);
+    this.handleNegativePolarity = this.handleNegativePolarity.bind(this);
   }
 
   componentWillMount() {
-    let query = queryString.parse(this.props.location.search);
+    const query = queryString.parse(this.props.location.search);
     if (query.token) {
       window.localStorage.setItem('jwt', query.token);
       this.props.history.push('/');
@@ -42,9 +46,29 @@ class App extends Component {
     });
   }
 
+  songTitleClick(title) {
+    return axios.get(`/video/${title}`).then((response) => {
+      this.setState({
+        video: response.data,
+      });
+    });
+  }
+
+  handleNegativePolarity() {
+    this.setState({
+      polarity: 'negative',
+    });
+  }
+
+  handlePositivePolarity() {
+    this.setState({
+      polarity: 'positive',
+    });
+  }
+
 
   render() {
-    const { query } = this.state;
+    const { query, songs, polarity } = this.state;
     return (
       <React.Fragment>
         <a href="/auth/google" className="button">
@@ -78,11 +102,11 @@ class App extends Component {
             </span>
             <span className="button-label">Sign in with Google</span>
           </div>
-                </a>
+        </a>
         <nav className="navbar">
           <h1>Who do you want to listen to?</h1>
           <div className="searchbar">
-            <Search query={query} change={this.handleChange} search={this.clickSearch} />
+            <Search query={query} change={this.handleChange} search={this.clickSearch} positivePolarity={this.handlePositivePolarity} negativePolarity={this.handleNegativePolarity} />
           </div>
         </nav>
         <div className="section">
@@ -90,7 +114,7 @@ class App extends Component {
             <VideoPlayer />
           </div>
           <div className="songTitles">
-            <SongList />
+            <SongList songs={songs} polarity={polarity} songClick={this.songTitleClick} />
           </div>
         </div>
       </React.Fragment>

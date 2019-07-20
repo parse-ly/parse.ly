@@ -19,9 +19,7 @@
     "url": "https://github.com/parse-ly/parse.ly/issues"
   },
   "homepage": "https://github.com/parse-ly/parse.ly#readme",
-  "devDependencies": {
-    
-  },
+  "devDependencies": {},
   "dependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
