@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-import queryString from 'query-string';
 import Search from './components/Search.jsx';
 import SongList from './components/SongList.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
@@ -103,6 +102,7 @@ class App extends Component {
             <span className="button-label">Sign in with Google</span>
           </div>
         </a>
+        
         <nav className="navbar">
           <h1>Who do you want to listen to?</h1>
           <div className="searchbar">
@@ -123,4 +123,3 @@ class App extends Component {
 }
 
 export default App;
-// ReactDom.render(<App />, document.getElementById('app'));
