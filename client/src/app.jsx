@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import queryString from 'query-string';
+import styles from '../dist/player.css';
+import Navigation from './navbar.jsx';
 import Search from './components/Search.jsx';
 import SongList from './components/SongList.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
@@ -73,9 +75,9 @@ class App extends Component {
     } = this.state;
     return (
       <React.Fragment>
-        <div className="navbar">
-          <h1>Who do you want to listen to?</h1>
-          <div className="searchbar">
+        <Navigation />
+          <h3>Who do you want to listen to?</h3>
+          <div className="col-md-6 offset-md-3">
             <Search
               query={query}
               change={this.handleChange}
@@ -84,7 +86,6 @@ class App extends Component {
               negativePolarity={this.handleNegativePolarity}
             />
           </div>
-        </div>
         <div className="section">
           <div className="player">
             <VideoPlayer video={video} />
