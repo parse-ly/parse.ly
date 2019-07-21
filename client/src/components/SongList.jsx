@@ -7,10 +7,10 @@ const SongList = (props) => {
   let songview;
   if (polarity === 'positive') {
     songview = songs.filter(song => song.polarity === 'positive')
-      .map((song, i) => <SongListEntry song={song} key={i} songTitleClick={songTitleClick} />);
+      .map((song, i) => <SongListEntry song={song} key={i} songTitleClick={songTitleClick} polarity={polarity} />);
   } else if (polarity === 'negative') {
     songview = songs.filter(song => song.polarity === 'negative')
-      .map((song, i) => <SongListEntry song={song} key={i} songTitleClick={songTitleClick} />);
+      .map((song, i) => <SongListEntry song={song} key={i} songTitleClick={songTitleClick} polarity={polarity} />);
   }
 
   return (
