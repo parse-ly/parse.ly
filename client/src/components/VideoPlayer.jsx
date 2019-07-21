@@ -4,7 +4,7 @@ const VideoPlayer = ({video}) => {
   // const video = props.video;
   // Conditional Rendering Statement needed
   if (!video) {
-    return <div>Loading...</div>;
+    return <div> </div>;
   }
   // const videoId = video.id.videoId;
   // const url = `https://www.youtube.com/embed/${videoId}`;
