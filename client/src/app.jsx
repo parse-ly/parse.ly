@@ -76,6 +76,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navigation />
+        <div className="container">
           <h3>Who do you want to listen to?</h3>
           <div className="col-md-6 offset-md-3">
             <Search
@@ -93,6 +94,7 @@ class App extends Component {
           <div className="songTitles">
             <SongList songs={songs} polarity={polarity} songTitleClick={this.songTitleClick} />
           </div>
+        </div>
         </div>
       </React.Fragment>
     );
