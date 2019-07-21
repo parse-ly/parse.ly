@@ -81,7 +81,7 @@ app.get('/auth/google/callback',
   (req, res) => {
     const { token, name } = req.user;
     const uriName = encodeURIComponent(name);
-    res.redirect(`http://127.0.0.1.xip.io:${process.env.PORT || 3000}?token=${token}&name=${uriName}`);
+    res.redirect(`${process.env.LOCAL_IP || 'http://127.0.0.1'}:${process.env.PORT || 3000}?token=${token}&name=${uriName}`);
   });
 
 app.get('/', (req, res) => {
