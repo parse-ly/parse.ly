@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import App from './app.jsx';
 import Landing from './Landing.jsx';
+import TopTen from './topten.jsx';
 
 const routing = (
   <Router>
@@ -14,6 +15,7 @@ const routing = (
     <React.Fragment>
       <Route exact path="/" component={Landing} />
       <Route path="/music" component={App} />
+      <Route path="/topten" component={TopTen} />
     </React.Fragment>
     </Switch>
   </Router>
