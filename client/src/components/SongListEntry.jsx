@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongListEntry = (props) => {
-  const { song, songTitleClick } = props;
+  const { song, songTitleClick, polarity } = props;
   const titleClick = () => {
     songTitleClick(song.songname);
   };
@@ -18,7 +18,7 @@ const SongListEntry = (props) => {
       </div>
       <div className="score">
         {/* Score */}
-        {song.score}
+        {`${Math.floor(song.score * 100)}% ${polarity} lyrics`}
       </div>
     </div>
   );
