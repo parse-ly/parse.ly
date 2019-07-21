@@ -68,7 +68,7 @@ class App extends Component {
 
 
   render() {
-    const { query, songs, polarity } = this.state;
+    const { query, songs, polarity, video } = this.state;
     return (
       <React.Fragment>
         <a href="/auth/google" className="button">
@@ -112,10 +112,10 @@ class App extends Component {
         </nav>
         <div className="section">
           <div className="player">
-            <VideoPlayer />
+            <VideoPlayer video={video} />
           </div>
           <div className="songTitles">
-            <SongList songs={songs} polarity={polarity} songClick={this.songTitleClick} />
+            <SongList songs={songs} polarity={polarity} songTitleClick={this.songTitleClick} />
           </div>
         </div>
       </React.Fragment>
