@@ -95,7 +95,8 @@ app.get('/video/:query', (req, res) => {
   const { query } = req.params;
   // send this query to Youtube API
   // get first result, send it in res
-  axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&key=${process.env.YT_API_KEY}`)
+  const uriQuery = encodeURIComponent(query);
+  axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${uriQuery}&key=${process.env.YT_API_KEY}`)
     .then((response) => {
       const { videoId } = response.data.items[0].id;
       const link = `https://www.youtube.com/embed/${videoId}`;
