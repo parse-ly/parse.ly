@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
+import queryString from 'query-string';
 import Search from './components/Search.jsx';
 import SongList from './components/SongList.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
@@ -26,7 +27,7 @@ class App extends Component {
     const query = queryString.parse(this.props.location.search);
     if (query.token) {
       window.localStorage.setItem('jwt', query.token);
-      this.props.history.push('/');
+      this.props.history.push('/music');
     }
   }
 

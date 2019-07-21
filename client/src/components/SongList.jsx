@@ -3,7 +3,7 @@ import React from 'react';
 import SongListEntry from './SongListEntry.jsx';
 
 const SongList = (props) => {
-  const { songs, polarity, songClick } = this.props;
+  const { songs, polarity, songClick } = props;
   let songview;
   if (polarity === 'positive') {
     songview = songs.filter(song => song.polarity === 'positive')

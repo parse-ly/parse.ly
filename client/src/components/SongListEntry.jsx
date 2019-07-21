@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongListEntry = (props) => {
-  const { song, songClick } = this.props;
+  const { song, songClick } = props;
   const titleClick = () => {
     songClick(song.songname);
   };
