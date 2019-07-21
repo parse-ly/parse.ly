@@ -1,9 +1,9 @@
 import React from 'react';
 
 const SongListEntry = (props) => {
-  const { song, songClick } = this.props;
+  const { song, songTitleClick } = props;
   const titleClick = () => {
-    songClick(song.songname);
+    songTitleClick(song.songname);
   };
   return (
     <div className="song-list-entry">
@@ -14,7 +14,7 @@ const SongListEntry = (props) => {
       </div>
       <div className="artist-name">
         {/* Artist */}
-        {song.artistname}
+        {song.artist}
       </div>
       <div className="score">
         {/* Score */}

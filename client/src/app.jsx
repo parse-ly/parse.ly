@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
+import queryString from 'query-string';
 import Search from './components/Search.jsx';
 import SongList from './components/SongList.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
@@ -26,7 +27,7 @@ class App extends Component {
     const query = queryString.parse(this.props.location.search);
     if (query.token) {
       window.localStorage.setItem('jwt', query.token);
-      this.props.history.push('/');
+      this.props.history.push('/music');
     }
   }
 
@@ -67,7 +68,9 @@ class App extends Component {
 
 
   render() {
-    const { query, songs, polarity } = this.state;
+    const {
+      query, songs, polarity, video,
+    } = this.state;
     return (
       <React.Fragment>
         <a href="/auth/google" className="button">
@@ -102,19 +105,25 @@ class App extends Component {
             <span className="button-label">Sign in with Google</span>
           </div>
         </a>
-        
-        <nav className="navbar">
+
+        <div className="navbar">
           <h1>Who do you want to listen to?</h1>
           <div className="searchbar">
-            <Search query={query} change={this.handleChange} search={this.clickSearch} positivePolarity={this.handlePositivePolarity} negativePolarity={this.handleNegativePolarity} />
+            <Search
+              query={query}
+              change={this.handleChange}
+              search={this.clickSearch}
+              positivePolarity={this.handlePositivePolarity}
+              negativePolarity={this.handleNegativePolarity}
+            />
           </div>
-        </nav>
+        </div>
         <div className="section">
           <div className="player">
-            <VideoPlayer />
+            <VideoPlayer video={video} />
           </div>
           <div className="songTitles">
-            <SongList songs={songs} polarity={polarity} songClick={this.songTitleClick} />
+            <SongList songs={songs} polarity={polarity} songTitleClick={this.songTitleClick} />
           </div>
         </div>
       </React.Fragment>

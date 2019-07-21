@@ -1,18 +1,18 @@
 import React from 'react';
 
-const VideoPlayer = (props) => {
-  const video = props.video;
+const VideoPlayer = ({video}) => {
+  // const video = props.video;
   // Conditional Rendering Statement needed
   if (!video) {
     return <div>Loading...</div>;
   }
-  const videoId = video.id.videoId;
-  const url = `https://www.youtube.com/embed/${videoId}`;
+  // const videoId = video.id.videoId;
+  // const url = `https://www.youtube.com/embed/${videoId}`;
 
   return (
     <div className="video-player">
       <div className="embed-responsive">
-        <iframe className="embed-responsive-item" src={url} allowFullScreen>
+        <iframe className="embed-responsive-item" src={video} allowFullScreen>
           {/* Video player with youtube link from api */}
         </iframe>
       </div>
