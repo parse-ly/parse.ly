@@ -68,7 +68,9 @@ class App extends Component {
 
 
   render() {
-    const { query, songs, polarity, video } = this.state;
+    const {
+      query, songs, polarity, video,
+    } = this.state;
     return (
       <React.Fragment>
         <a href="/auth/google" className="button">
@@ -103,13 +105,19 @@ class App extends Component {
             <span className="button-label">Sign in with Google</span>
           </div>
         </a>
-        
-        <nav className="navbar">
+
+        <div className="navbar">
           <h1>Who do you want to listen to?</h1>
           <div className="searchbar">
-            <Search query={query} change={this.handleChange} search={this.clickSearch} positivePolarity={this.handlePositivePolarity} negativePolarity={this.handleNegativePolarity} />
+            <Search
+              query={query}
+              change={this.handleChange}
+              search={this.clickSearch}
+              positivePolarity={this.handlePositivePolarity}
+              negativePolarity={this.handleNegativePolarity}
+            />
           </div>
-        </nav>
+        </div>
         <div className="section">
           <div className="player">
             <VideoPlayer video={video} />
