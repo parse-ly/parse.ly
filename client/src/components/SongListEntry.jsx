@@ -3,7 +3,7 @@ import React from 'react';
 const SongListEntry = (props) => {
   const { song, songTitleClick, polarity } = props;
   const titleClick = () => {
-    songTitleClick(song.songname);
+    songTitleClick(`${song.artist} ${song.songname}`);
   };
   return (
     <li className="listItems">
