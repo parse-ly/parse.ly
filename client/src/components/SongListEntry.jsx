@@ -6,7 +6,7 @@ const SongListEntry = (props) => {
     songTitleClick(song.songname);
   };
   return (
-    <li className="song-list-entry">
+    <li className="listItems">
       <div className="song-title" onClick={titleClick} >
         <b>Title: </b>
         {song.songname}
