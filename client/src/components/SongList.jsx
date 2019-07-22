@@ -14,8 +14,10 @@ const SongList = (props) => {
   }
 
   return (
+    <React.Fragment>
+    {/* <div className="lastContainer"> */}
     <div className="container">
-      <ul className="song-list">
+      <ul className="left mplpx">
         {/* <SongListEntry /> */}
         {/* Map over each Song Entry to render in list form */}
         {/* {this props object will have an array of objects that will have
@@ -26,7 +28,8 @@ const SongList = (props) => {
         -polarity} */}
         {songview}
       </ul>
-    </div>
+      </div>
+      </React.Fragment>
   );
 };
 
