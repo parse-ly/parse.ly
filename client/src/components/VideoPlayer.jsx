@@ -12,7 +12,7 @@ const VideoPlayer = ({video}) => {
   return (
     <div className="videoPlayer">
       <div className="embed-responsive">
-        <iframe className="embed-responsive-item" title="youtube-video" src={video} allowFullScreen align="right" height="500px" width="800px">
+        <iframe className="embed-responsive-item" title="youtube-video" src={video} allowFullScreen align="right" height="500px" width="750px">
           {/* Video player with youtube link from api */}
         </iframe>
       </div>
