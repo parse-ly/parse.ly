@@ -77,7 +77,7 @@ class App extends Component {
       <React.Fragment>
         <Navigation />
         <div className="container">
-          <h3>Who do you want to listen to?</h3>
+          <h4>Who do you want to listen to?</h4>
           </div>
           <div className="col-md-6 offset-md-3">
             <Search
