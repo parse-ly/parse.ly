@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/parsley', {useNewUrlParser: true}).catch((err) => {
+mongoose.connect('mongodb://localhost/parsely', { useNewUrlParser: true }).catch((err) => {
   console.log('Having trouble with Database => ', err.message);
 });
 
