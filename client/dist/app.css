@@ -212,3 +212,23 @@ height: auto;
 	height: 40px;
 	width: 40px;
 }
+
+.song-list {
+	width: 60%;
+	margin: 1 px auto;
+	border: 1px solid #eee;
+	box-shadow: 0 10px 10px #ccc;
+	text-align: center;
+	cursor: pointer;
+}
+
+.song-list-entry {
+	background-color: white;
+	border: 1px solid grey;
+	padding: 8px;
+	border-radius: 10px;
+}
+
+.song-title:hover {
+	color: blue;
+}
