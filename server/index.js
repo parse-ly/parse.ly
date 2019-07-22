@@ -115,6 +115,26 @@ app.get('/video/:query', (req, res) => {
     .catch(err => console.error(err));
 });
 
+app.get('/topten/positive', (req, res) => {
+  // get all songs from DB with a positive polarity
+  Song.find({ polarity: 'positive' }).sort({ score: -1 }).limit(10)
+    .then((results) => {
+      res.status(200);
+      res.json(results);
+    })
+    .catch(err => console.error(err));
+});
+
+app.get('/topten/negative', (req, res) => {
+  // get all songs from DB with a positive polarity
+  Song.find({ polarity: 'negative' }).sort({ score: -1 }).limit(10)
+    .then((results) => {
+      res.status(200);
+      res.json(results);
+    })
+    .catch(err => console.error(err));
+});
+
 // UNCOMMENT WHEN TESTING SERVER
 // app.get('/search/:artist', (req, res) => {
 //   res.status(200);
@@ -371,10 +391,10 @@ app.get('/search/:artist', (req, res) => {
               'X-AYLIEN-TextAPI-Application-ID': process.env.AYLIEN_APP_ID,
             },
           };
-          const data = {
-            HTTP_CONTENT_LANGUAGE: 'text/javascript',
-          };
-          const lyricsPosts = lyricsURI.map(lyrics => axios.post(`https://api.aylien.com/api/v1/sentiment?text=${lyrics}&mode=document`, data, config));
+          // const data = {
+          //   HTTP_CONTENT_LANGUAGE: 'text/javascript',
+          // };
+          const lyricsPosts = lyricsURI.map(lyrics => axios.post(`https://api.aylien.com/api/v1/sentiment?text=${lyrics}&mode=document`, null, config));
           const songsDataAndLyricPosts = [songsDataAndPromises[0], lyricsPosts];
           return songsDataAndLyricPosts;
         })
@@ -385,11 +405,17 @@ app.get('/search/:artist', (req, res) => {
               songsData.forEach((songData, i) => {
                 songData.score = lyricScores[i].data.polarity_confidence;
                 songData.polarity = lyricScores[i].data.polarity;
-                Song.create({
+                Song.findOrCreate({
                   songname: songData.songname,
                   artistname: songData.artist,
                   score: songData.score,
                   polarity: songData.polarity,
+                }, {
+                  appendToArray: false,
+                }, (err, res) => {
+                  if (err) {
+                    console.error(err);
+                  }
                 });
               });
               res.status(200);
