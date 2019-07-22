@@ -8,7 +8,7 @@ const Search = ({
     <div className="container">
       <div className={styles.searchBar}>
       <input className="input-field" type="text" placeholder="Search an Artist..." value={query} onChange={change} />
-      <h2>How are you feeling?</h2>
+      <h4>How are you feeling?</h4>
       <button type="button" className="waves-effect waves-light btn blue accent-3 happy" onClick={() => { positivePolarity(); search(query); }}>
           Happy
         {/* Happy Emoji button */}

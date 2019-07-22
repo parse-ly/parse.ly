@@ -6,15 +6,15 @@ const SongListEntry = (props) => {
     songTitleClick(song.songname);
   };
   return (
-    <li className="song-list-entry">
-      <div className="song-title" onClick={titleClick} >
-        <b>Title: </b>
-        {song.songname}
-      </div>
-      <div className="artist-name">
+    <li className="listItems">
+      {/* <div className="artist-name">
         <b>Artist: </b>
         {song.artist}
+      </div> */}
+      <div className="song-title" onClick={titleClick} >
+      {song.artist} | {song.songname}
       </div>
+      
       <div className="score">
         <b>Score: </b>
         {`${Math.floor(song.score * 100)}% ${polarity} lyrics`}
